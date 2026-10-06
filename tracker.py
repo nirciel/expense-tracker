@@ -1,4 +1,4 @@
-# Expense Tracker - Installment 2
+# Expense Tracker - Installment 3
 # Author: Tanya Anrachel M. Labanes
 # Description: This program is called an "Expense Tracker" which allows the users to track their expenses and income. 
 
@@ -15,17 +15,33 @@ print (" [4] Exit\t\t\t(coming soon)\n")
 
 name = input("What is your name? ")
 print ("Welcome, ",name , "! Let's log two expenses.\n")
+subtotal = 0
+
 item1 = input ("First Expense? ")
 amount1 = float (input ("Amount? "))
+subtotal = subtotal + amount1
+
 item2 = input ("Second Expense? ")
 amount2 = float (input ("Amount? "))
-total = amount1 + amount2
-average = total / 2
+subtotal = subtotal + amount2
+
+tax_percent = int (input("Tax Rate (%)? "))
+budget = float (input("Budget? "))
+average = subtotal / 2
+tax = subtotal * (tax_percent / 100)
+total = subtotal + tax
+over_budget = total > budget
+left = budget - total
+
 print ("-" * 40)
 print ("SUMMARY")
 print ("\t-", item1, ":" , "\t$", amount1)
 print ("\t-", item2, ":" , "\t$", amount2)
-print ("Total Spent:\t\t$", total)
+print ("Subtotal:\t\t$", subtotal)
 print ("Average:\t\t$", average)
+print ("Tax:\t\t\t$", tax)
+print ("Total:\t\t\t$", total)
+print ("Over the Budget?\t", over_budget)
+print ("Left in budget:\t\t$", left)
 print ("-" * 40)
-print ("Made by: Tanya Anrachel M. Labanes | Installment 2")
+print ("Made by: Tanya Anrachel M. Labanes | Installment 3")
