@@ -1,75 +1,74 @@
-# Expense Tracker - Installment 4
+# Expense Tracker - Installment 5
 # Author: Tanya Anrachel M. Labanes
-# Description: This program is called an "Expense Tracker" which allows the users to track their expenses and income. 
+# Description: This program allows users to track their expenses and income.
 
-print ("=" * 40)
-print ("\t\tEXPENSE TRACKER")
-print ("\tTrack your expenses and income with ease.")
-print ("=" * 40)
-print ("MAIN MENU")
-print (" [1] Add an Expense\t\t(coming soon)")
-print (" [2] View all Expenses\t\t(coming soon)")
-print (" [3] Show total spent\t\t(coming soon)")
-print (" [4] Exit\t\t\t(coming soon)\n")
-
+print("=" * 40)
+print("\t\tEXPENSE TRACKER")
+print("\tTrack your expenses and income with ease.")
+print("=" * 40)
 
 name = input("What is your name? ")
-print ("Welcome, ",name , "! Let's log two expenses.\n")
+tax_percent = float(input("Tax Rate %? "))
+budget = float(input("Your Budget? "))
+
 subtotal = 0
+count = 0
 
-item1 = input ("First Expense? ")
-amount1 = float (input ("Amount? "))
-subtotal = subtotal + amount1
+print("Welcome, ", name, "!")
+print("\nMAIN MENU")
+print(" [1] Add an Expense")
+print(" [2] View all Expenses (coming soon)")
+print(" [3] Show total spent")
+print(" [4] Exit")
 
-if amount1 < 50:
-    print ("  Small expense.")
-elif amount1 >= 50 and amount1 <= 100:
-    print ("  Moderate expense.")
-elif amount1 > 100 and amount1 <= 200:
-    print ("  Big expense.")
-else:
-    print ("  Huge expense - are your sure?")
+choice = ""
 
+while choice != "4":
+    
 
-item2 = input ("Second Expense? ")
-amount2 = float (input ("Amount? "))
-subtotal = subtotal + amount2
+    choice = input("Choose 1-4: ")
 
-if amount2 < 50:
-    print ("  Small expense.")
-elif amount2 >= 50 and amount2 <= 100:
-    print ("  Moderate expense.")
-elif amount2 > 100 and amount2 <= 200:
-    print ("  Big expense.")
-else:
-    print ("  Huge expense - are your sure?")
+    if choice == "1":
+        amount = float(input("Amount? "))
+        subtotal = subtotal + amount
+        count = count + 1
 
-if amount1 >= 100 and amount2 >= 100:
-    print ("  Two big expenses in a row - slow down!")
+        if amount > 200:
+            print("  Huge expense - are you sure?")
+        elif amount > 100:
+            print("  Big expense.")
+        elif amount > 50:
+            print("  Moderate expense.")
+        else:
+            print("  Small expense.")
 
-tax_percent = float (input("Tax Rate %? "))
-budget = float (input("Your Budget? "))
-average = subtotal / 2
-tax = subtotal * (tax_percent / 100)
-gtotal = subtotal + tax
-over_budget = gtotal > budget
-left = budget - gtotal
+    elif choice == "2":
+        print("  Coming soon: the tracker can't remember each item yet.")
 
-print ("-" * 40)
-print ("SUMMARY")
-print ("\t-", item1, ":" , "\t$", amount1)
-print ("\t-", item2, ":" , "\t$", amount2)
-print ("Subtotal:\t\t$", subtotal)
-print ("Average:\t\t$", average)
-print("Tax (" + str(tax_percent) + "%):\t\t$" + str(tax))
-print ("Grand Total:\t\t$", gtotal)
+    elif choice == "3":
+        tax = subtotal * (tax_percent / 100)
+        gtotal = subtotal + tax
+        over_budget = gtotal > budget
+        left = budget - gtotal
 
-if over_budget:
-    print("Over budget by: $" + str(left * -1) + "!")
-elif gtotal > budget * 0.9:
-    print("Careful: only $" + str(left) + " left.")
-else:
-    print("Within budget. $" + str(left) + " left.")
+        print("Expense Count:\t" + str(count))
+        print("Subtotal:\t$", subtotal)
+        print("Tax (" + str(tax_percent) + "%):\t$", tax)
+        print("Grand Total:\t$", gtotal)
 
-print ("-" * 40)
-print ("Made by: Tanya Anrachel M. Labanes | Installment 4")
+        if over_budget:
+            print("Over budget by: $", left * -1, "!")
+        elif gtotal > budget * 0.9:
+            print("Careful: only   $", left, "left.")
+        else:
+            print("Within budget.   $", left,"left.")
+
+    elif choice == "4":
+        print("Goodbye, " + name + "!")
+        print("-" * 40)
+        print("Made by: Tanya Anrachel M. Labanes | Installment 5")
+        print ("=" * 40)
+
+    else:
+        print("  Please choose 1, 2, 3 or 4.")
+
